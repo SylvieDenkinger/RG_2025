@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fin de l'étude</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .icon {
+            font-size: 80px;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        
+        .message {
+            color: #666;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .contact {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .contact p {
+            margin: 5px 0;
+            color: #555;
+        }
+        
+        .redirect {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .button-secondary {
+            background: #e9ecef;
+            color: #495057;
+        }
+        
+        .button-secondary:hover {
+            background: #dee2e6;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .message {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">✓</div>
+        
+        <h1>Merci pour votre participation</h1>
+        
+        <div class="message">
+            <p>We would like to thank you for your interest but you are unfortunately not eligible for this study because your current video game</p>  
+            <p> playing habits are inconsistent with your Prolific prescreening responses and do not match our recruitment criteria.</p>
+          </p>
+            <p>Please note that this is in no way a judgement over those habits, simply a recruitement factor for the study to have meaningful results.</p>
+          <p>In addition, we recommend you update your profile on Prolific so that such situations does not happen to you in the future.</p>
+          </p>
+            <p> Please note we cannot change this criteria and we kindly ask you to return your submission on Prolific by selecting the 'stop without completing' button.'</p>
+          </p>
+            <p>Finally, do not reuse the provided link to submit different answers to the prescreening questions. We verify all data. In such cases, no payment will be issued, as the data becomes invalid.</p>
+        </div>
+        
+       
+        
+        <div>
+            <a href="https://www.prolific.co" class="button button-secondary">
+                Retour à Prolific
+            </a>
+        </div>
+        
+        <div class="redirect">
+            <p>automatic redirection in <span id="countdown">10</span> seconds...</p>
+        </div>
+    </div>
+
+    <script>
+        // Compte à rebours pour redirection
+        let seconds = 10;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdown = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                // Rediriger vers Prolific
+                window.location.href = "https://www.prolific.co";
+            }
+        }, 1000);
+        
+        // Empêcher le retour en arrière
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.go(1);
+        };
+        
+        // Empêcher F5
+        document.onkeydown = function(e) {
+            if (e.keyCode == 116) {
+                e.preventDefault();
+                return false;
+            }
+        };
+    </script>
+</body>
+</html>
+
+
+
+
+
